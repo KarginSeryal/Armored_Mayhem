@@ -13,7 +13,7 @@ class DrawPanel extends JPanel implements MouseListener {
     private Rectangle button;
 
     public DrawPanel() {
-        button = new Rectangle(2000, 400, 400, 400);
+        button = new Rectangle(100, 200, 32, 32);
         this.addMouseListener(this);
     }
 
@@ -46,7 +46,10 @@ class DrawPanel extends JPanel implements MouseListener {
     }
 
     public void mouseReleased(MouseEvent e) {
-
+        int mouseX = e.getX();
+        int mouseY = e.getY();
+        button.x = mouseX;
+        button.y = mouseY;
     }
     public void mouseEntered(MouseEvent e) { }
     public void mouseExited(MouseEvent e) { }
