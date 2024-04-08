@@ -1,17 +1,15 @@
+import java.awt.*;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseEvent;
 import javax.swing.JPanel;
-import java.awt.Graphics;
-import java.awt.Rectangle;
-import java.awt.Point;
+import java.awt.image.BufferedImage;
 import java.util.ArrayList;
-import java.awt.Font;
 
 class DrawPanel extends JPanel implements MouseListener {
 
 
     private Rectangle button;
-
+    private BufferedImage image;
     public DrawPanel() {
         button = new Rectangle(100, 200, 32, 32);
         this.addMouseListener(this);
@@ -21,7 +19,8 @@ class DrawPanel extends JPanel implements MouseListener {
         super.paintComponent(g);
         g.setFont(new Font("Courier New", Font.BOLD, 20));
         g.drawString("GET NEW CARDS", 150, 120);
-        g.drawRect((int)button.getX(), (int)button.getY(), (int)button.getWidth(), (int)button.getHeight());
+  
+        g.drawImage(image, (int) button.getX(), (int) button.getY(), Color.WHITE, null);
     }
 
     public void mousePressed(MouseEvent e) {
@@ -54,4 +53,12 @@ class DrawPanel extends JPanel implements MouseListener {
     public void mouseEntered(MouseEvent e) { }
     public void mouseExited(MouseEvent e) { }
     public void mouseClicked(MouseEvent e) { }
+
+    public BufferedImage getImage() {
+        return image;
+    }
+
+    public void setImage(BufferedImage image) {
+        this.image = image;
+    }
 }
