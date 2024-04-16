@@ -15,13 +15,6 @@ class DrawPanel extends JPanel implements MouseListener {
         this.addMouseListener(this);
     }
 
-    protected void paintComponent(Graphics g) {
-        super.paintComponent(g);
-        g.setFont(new Font("Courier New", Font.BOLD, 20));
-        g.drawString("GET NEW CARDS", 150, 120);
-  
-        g.drawImage(image, (int) button.getX(), (int) button.getY(), Color.WHITE, null);
-    }
 
     public void mousePressed(MouseEvent e) {
 

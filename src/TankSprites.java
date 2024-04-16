@@ -11,17 +11,22 @@ public class TankSprites extends DrawPanel{
     private boolean show;
     private BufferedImage image;
 
+
     public TankSprites(String name, String imageFileName, boolean show) {
         this.name = name;
         this.imageFileName = imageFileName;
         this.show = show;
+        image = readImage();
+
+    }
+    protected void paintComponent(Graphics g) {
+        g.drawImage(image, 100, 200, 120, 120, null);
     }
 
     public BufferedImage readImage() {
+        image = null;
         try {
-            BufferedImage image;
             image = ImageIO.read(new File(imageFileName));
-            this.setImage(image);
             return image;
         }
         catch (IOException e) {
@@ -32,7 +37,7 @@ public class TankSprites extends DrawPanel{
 
     public void drawTank(Graphics g){
         while(true)
-            g.drawImage(image, 100, 100, null, null);
+            g.drawImage(image, 100, 100, null);
     }
 
     public String getValue() {
