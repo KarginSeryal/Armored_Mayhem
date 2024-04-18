@@ -5,22 +5,25 @@ import java.io.File;
 import java.io.IOException;
 
 public class TankSprites extends DrawPanel{
-    private String name;
+    private final String name;
     private String value;
     private String imageFileName;
     private boolean show;
     private BufferedImage image;
+    private Tank tank;
 
 
-    public TankSprites(String name, String imageFileName, boolean show) {
+    public TankSprites(String name, String imageFileName, boolean show, Tank tank) {
         this.name = name;
         this.imageFileName = imageFileName;
         this.show = show;
+        this.tank = tank;
         image = readImage();
 
     }
     protected void paintComponent(Graphics g) {
-        g.drawImage(image, 100, 200, 120, 120, null);
+        g.drawImage(image, tank.getX(), tank.getY(), 120, 120, null);
+        //g.drawRect(tank.getX(), tank.getY(), 100,100);
     }
 
     public BufferedImage readImage() {

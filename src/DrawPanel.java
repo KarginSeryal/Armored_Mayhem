@@ -11,7 +11,7 @@ class DrawPanel extends JPanel implements MouseListener {
     private Rectangle button;
     private BufferedImage image;
     public DrawPanel() {
-        button = new Rectangle(100, 200, 32, 32);
+
         this.addMouseListener(this);
     }
 

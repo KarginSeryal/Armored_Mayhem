@@ -1,7 +1,8 @@
-import java.awt.*;
-import java.awt.image.*;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+import java.awt.event.MouseEvent;
 
-public class Tank {
+public class Tank implements KeyListener{
     private int health;
     private int speed;
     private int x;
@@ -10,6 +11,8 @@ public class Tank {
     public Tank(int health, int speed) {
         this.health = health;
         this.speed = speed;
+        x = 100;
+        y = 100;
     }
 
     public int getHealth() {
@@ -42,5 +45,23 @@ public class Tank {
 
     public void setY(int y) {
         this.y = y;
+    }
+
+    @Override
+    public void keyTyped(KeyEvent e) {
+
+    }
+
+    @Override
+    public void keyPressed(KeyEvent e) {
+        switch (e.getKeyCode()){
+            case KeyEvent.VK_A -> x -= 10;
+            case KeyEvent.VK_D -> x += 10;
+        }
+    }
+
+    @Override
+    public void keyReleased(KeyEvent e) {
+
     }
 }
