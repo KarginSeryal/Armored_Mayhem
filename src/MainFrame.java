@@ -6,6 +6,7 @@ public class MainFrame extends JFrame implements Runnable {
     private TankSprites t;
     private Thread windowThread;
     private Tank tank;
+    private Terrain map;
 
     public MainFrame(String display) {
         super(display);
@@ -14,6 +15,7 @@ public class MainFrame extends JFrame implements Runnable {
         p = new DrawPanel();
         tank = new Tank(100, 100);
         t = new TankSprites("tank", "sprites/tank_1.png", true, tank);
+        map = new Terrain();
         this.add(t);
         this.addKeyListener(tank);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
