@@ -9,11 +9,20 @@ class DrawPanel extends JPanel implements MouseListener {
 
 
     private Rectangle button;
+    private Terrain map;
     private BufferedImage image;
-    private
-    public DrawPanel() {
+    DrawPanel() {
 
         this.addMouseListener(this);
+    }
+    protected void paintComponent(Graphics g){
+        map.setColor(Color.WHITE);
+        for(int i = 0; i < map.getCords().size()-2; i += 2){
+            System.out.println(map.getCords().get(i+1));
+
+
+            g.drawLine(map.getCords().get(i),map.getCords().get(i+1),map.getCords().get(i+2),map.getCords().get(i+3));
+        }
     }
 
 

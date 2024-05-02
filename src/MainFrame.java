@@ -1,4 +1,5 @@
 import javax.swing.JFrame;
+import java.awt.*;
 
 public class MainFrame extends JFrame implements Runnable {
 
@@ -6,16 +7,15 @@ public class MainFrame extends JFrame implements Runnable {
     private TankSprites t;
     private Thread windowThread;
     private Tank tank;
-    private Terrain map;
 
     public MainFrame(String display) {
         super(display);
         int frameWidth = 1500;
         int frameHeight = 1000;
+        this.setBackground(Color.BLACK);
         p = new DrawPanel();
         tank = new Tank(100, 100);
         t = new TankSprites("tank", "sprites/tank_1.png", true, tank);
-        map = new Terrain();
         this.add(t);
         this.addKeyListener(tank);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -36,6 +36,7 @@ public class MainFrame extends JFrame implements Runnable {
         while (true) {
             this.repaint();
             t.repaint();
+            p.repaint();
         }
     }
 }
