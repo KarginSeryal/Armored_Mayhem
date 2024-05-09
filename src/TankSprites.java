@@ -23,7 +23,6 @@ public class TankSprites extends DrawPanel{
     }
     protected void paintComponent(Graphics g) {
         g.drawImage(image, tank.getX(), tank.getY(), 120, 120, null);
-        //g.drawRect(tank.getX(), tank.getY(), 100,100);
     }
 
     public BufferedImage readImage() {
