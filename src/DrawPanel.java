@@ -11,27 +11,17 @@ class DrawPanel extends JPanel implements MouseListener {
     private Rectangle button;
     private Terrain map;
     private BufferedImage image;
-    DrawPanel() {
+    private TankSprites tanks;
+    DrawPanel(TankSprites tanks) {
         map = new Terrain();
+        this.tanks=tanks;
     }
 
     protected void paintComponent(Graphics g){
-        Graphics2D g2 = (Graphics2D) g;
-        g2.setStroke(new BasicStroke(5));
-        float[] color = new float[3];
-        color = Color.RGBtoHSB(35, 130, 59, color);
+        tanks.draw(g);
+        map.draw(g);
 
-        for(int i = 0; i < map.getCords().size()-2; i += 2){
 
-            g.setColor(Color.getHSBColor(color[0],color[1],color[2]));
-            g2.setStroke(new BasicStroke(5));
-            g2.drawLine(map.getCords().get(i),map.getCords().get(i+1),map.getCords().get(i+2),map.getCords().get(i+3));
-
-            g2.setStroke(new BasicStroke(20));
-            g.setColor(Color.BLACK);
-            g2.drawLine(map.getCords().get(i),map.getCords().get(i+1)+20,map.getCords().get(i+2),map.getCords().get(i+3)+20);
-            //g.drawLine(map.getCords().get(i),map.getCords().get(i+1),map.getCords().get(i+2),map.getCords().get(i+3));
-        }
     }
 
     public void setMap(Terrain map) {

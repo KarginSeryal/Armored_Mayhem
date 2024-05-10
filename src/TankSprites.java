@@ -1,10 +1,11 @@
 import javax.imageio.ImageIO;
+import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
-public class TankSprites extends DrawPanel{
+public class TankSprites {
     private final String name;
     private String value;
     private String imageFileName;
@@ -21,10 +22,9 @@ public class TankSprites extends DrawPanel{
         image = readImage();
 
     }
-    protected void paintComponent(Graphics g) {
+    protected void draw(Graphics g) {
         g.drawImage(image, tank.getX(), tank.getY(), 120, 120, null);
     }
-
     public BufferedImage readImage() {
         image = null;
         try {
