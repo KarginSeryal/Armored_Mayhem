@@ -6,13 +6,13 @@ public class Tank implements KeyListener{
     private int health;
     private int speed;
     private int x;
-    private int y;
+    private Terrain map;
 
-    public Tank(int health, int speed) {
+    public Tank(int health, int speed, Terrain map) {
         this.health = health;
         this.speed = speed;
-        x = 100;
-        y = 100;
+        x = 0;
+        this.map = map;
     }
 
     public int getHealth() {
@@ -24,12 +24,10 @@ public class Tank implements KeyListener{
     }
 
     public int getX() {
-        return x;
+        return map.getHitMap().get(x).x;
     }
 
-    public void setX(int x) {
-        this.x = x;
-    }
+
 
     public int getSpeed() {
         return speed;
@@ -40,11 +38,7 @@ public class Tank implements KeyListener{
     }
 
     public int getY() {
-        return y;
-    }
-
-    public void setY(int y) {
-        this.y = y;
+        return map.getHitMap().get(x).y;
     }
 
     @Override
@@ -55,8 +49,16 @@ public class Tank implements KeyListener{
     @Override
     public void keyPressed(KeyEvent e) {
         switch (e.getKeyCode()){
-            case KeyEvent.VK_A -> x -= 10;
-            case KeyEvent.VK_D -> x += 10;
+            case KeyEvent.VK_A -> {
+                if(x < 2000){
+                    x++;
+                }
+            }
+            case KeyEvent.VK_D -> {
+                if(x>0){
+                    x--;
+                }
+            }
         }
     }
 

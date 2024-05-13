@@ -18,9 +18,8 @@ class DrawPanel extends JPanel implements MouseListener {
     }
 
     protected void paintComponent(Graphics g){
-        tanks.draw(g);
         map.draw(g);
-
+        tanks.draw(g);
 
     }
 
