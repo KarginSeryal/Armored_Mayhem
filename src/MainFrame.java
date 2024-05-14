@@ -18,7 +18,7 @@ public class MainFrame extends JFrame implements Runnable {
         this.setBackground(Color.getHSBColor(bgc[0],bgc[1],bgc[2]));
         map = new Terrain();
         tank = new Tank(100, 100, map);
-        t = new TankSprites("tank", "sprites/tank_1.png", true, tank);
+        t = new TankSprites("tank", "sprites/tank-1.png", true, tank);
         p = new DrawPanel(t);
         p.setMap(map);
         this.add(p);

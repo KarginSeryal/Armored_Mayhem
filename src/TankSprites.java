@@ -23,10 +23,11 @@ public class TankSprites {
 
     }
     protected void draw(Graphics g) {
-        g.drawImage(image, tank.getX(), tank.getY(), 120, 120, null);
+        g.drawImage(image, tank.getX() - 55, tank.getY() -30, 110, 36, null);
     }
     public BufferedImage readImage() {
         image = null;
+
         try {
             image = ImageIO.read(new File(imageFileName));
             return image;

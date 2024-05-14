@@ -26,6 +26,13 @@ public class Terrain {
             cordsX.add(i);
             cordsY.add(cordsY.get(i-1) - (int) ((Math.random()*((int) (Math.random()*((int) (Math.random()*9)-4))-((int) (Math.random()*9)-4)))-((int) (Math.random()*((int) (Math.random()*9)-4))-((int) (Math.random()*9)-4))));
         }
+        int temp = 0;
+        for(int i: cordsY){
+            if(i > temp){
+                temp = i;
+            }
+        }
+        cordsY.add(temp); //lowest coordinate of the terrain
         for(int i = 0; i < 500; i+=4){
             for(int j = 0; j < 4; j++){
                 avgY += cordsY.get(i*4 + j);
@@ -42,20 +49,29 @@ public class Terrain {
         float[] dirt = new float[3];
         Color.RGBtoHSB(35, 130, 59, grass);
         Color.RGBtoHSB(59, 45, 18, dirt);
-       /* for(int j = 0; j <600; j+=3) {     //brown floor
+        g.setColor(Color.getHSBColor(dirt[0], dirt[1], dirt[2]));
+        g2.setStroke(new BasicStroke(7));
+        for(int j = 0; j < 100; j+=7) {     //brown floor
             for (int i = 0; i < cordsX.size() - 1; i++) {
-                g.setColor(Color.getHSBColor(dirt[0], dirt[1], dirt[2]));
-                g2.setStroke(new BasicStroke(3));
                 g2.drawLine(cordsX.get(i), cordsY.get(i) + 10+j, cordsX.get(i + 1), cordsY.get(i + 1) + 10+j);
             }
         }
+        g2.setStroke(new BasicStroke(40));
+        for(int j = 0; j < 200; j+=40) {     //brown floor
+            for (int i = 0; i < cordsX.size() - 1; i++) {
+                g2.drawLine(cordsX.get(i), cordsY.get(i) + 140+j, cordsX.get(i + 1), cordsY.get(i + 1) + 140+j);
+            }
+        }
+        g.fillRect(0, cordsY.get(cordsY.size()-1), 2000, 1000);
+
+        g.setColor(Color.getHSBColor(grass[0], grass[1], grass[2]));
+        g2.setStroke(new BasicStroke(3));
         for(int j = 0; j < 10; j++) {     //grass
             for (int i = 0; i < cordsX.size() - 1; i++) {
-                g.setColor(Color.getHSBColor(grass[0], grass[1], grass[2]));
-                g2.setStroke(new BasicStroke(3));
+
                 g2.drawLine(cordsX.get(i), cordsY.get(i)+j, cordsX.get(i + 1), cordsY.get(i + 1)+j);
             }
-        }*/
+        }
 
         for (int i = 0; i < hitMap.size() - 1; i++) {  //Floor hitbox
             g.setColor(Color.gray);

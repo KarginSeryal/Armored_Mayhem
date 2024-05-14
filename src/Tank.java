@@ -24,7 +24,7 @@ public class Tank implements KeyListener{
     }
 
     public int getX() {
-        return map.getHitMap().get(x).x;
+        return (int) map.getHitMap().get(this.x).getX();
     }
 
 
@@ -50,14 +50,15 @@ public class Tank implements KeyListener{
     public void keyPressed(KeyEvent e) {
         switch (e.getKeyCode()){
             case KeyEvent.VK_A -> {
-                if(x < 2000){
-                    x++;
-                }
-            }
-            case KeyEvent.VK_D -> {
                 if(x>0){
                     x--;
                 }
+            }
+            case KeyEvent.VK_D -> {
+                if(x < 2000){
+                    x++;
+                }
+
             }
         }
     }
