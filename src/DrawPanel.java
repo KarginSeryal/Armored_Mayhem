@@ -11,8 +11,8 @@ class DrawPanel extends JPanel implements MouseListener {
     private Rectangle button;
     private Terrain map;
     private BufferedImage image;
-    private TankSprites tanks;
-    DrawPanel(TankSprites tanks) {
+    private Sprites tanks;
+    DrawPanel(Sprites tanks) {
         map = new Terrain();
         this.tanks=tanks;
     }

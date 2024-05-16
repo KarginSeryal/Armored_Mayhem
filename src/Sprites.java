@@ -1,29 +1,29 @@
 import javax.imageio.ImageIO;
-import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
-public class TankSprites {
+public class Sprites {
     private final String name;
     private String value;
     private String imageFileName;
-    private boolean show;
     private BufferedImage image;
     private Tank tank;
+    private Cannon cannon;
 
 
-    public TankSprites(String name, String imageFileName, boolean show, Tank tank) {
+    public Sprites(String name, String imageFileName, Tank tank, Cannon cannon) {
         this.name = name;
         this.imageFileName = imageFileName;
-        this.show = show;
         this.tank = tank;
+        this.cannon = cannon;
         image = readImage();
 
     }
     protected void draw(Graphics g) {
-        g.drawImage(image, tank.getX() - 55, tank.getY() -30, 110, 36, null);
+        g.drawImage(cannon.getImage(), tank.getX()+6, tank.getY() -26, 40, 8, null);
+        g.drawImage(image, tank.getX() - 54, tank.getY() -30, 108, 36, null);
     }
     public BufferedImage readImage() {
         image = null;
@@ -51,13 +51,6 @@ public class TankSprites {
         this.value = value;
     }
 
-    public boolean isShow() {
-        return show;
-    }
-
-    public void setShow(boolean show) {
-        this.show = show;
-    }
 
 
 }
