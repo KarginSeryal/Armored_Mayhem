@@ -41,6 +41,17 @@ public class Terrain {
             System.out.println(avgY);
             avgY = 0;
         }
+
+        /*int slopeX = 4;
+        int slopeY;
+        for(int i = 0; i < 2000 ; i+=4){
+            slopeY = hitMap.get(i + 1).y - hitMap.get(i).y;
+            // slopeX = hitMap.get(i + 1).x - hitMap.get(i).x;
+            for(int j = 0; j < 4; j++){
+                hitMap.add(i + j, new Point(hitMap.get(i).x + j, hitMap.get(i).y + (Math.round((float) slopeY /slopeX) * j)));
+            }
+         }*/
+
     }
 
     public void draw(Graphics g){

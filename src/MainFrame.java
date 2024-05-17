@@ -19,7 +19,7 @@ public class MainFrame extends JFrame implements Runnable {
         this.setBackground(Color.getHSBColor(bgc[0],bgc[1],bgc[2]));
         cannon = new Cannon("sprites/cannon_1.png");
         map = new Terrain();
-        tank = new Tank(100, 100, map);
+        tank = new Tank(100, 100, map, cannon);
         t = new Sprites("tank", "sprites/tank_1.png", tank, cannon);
         p = new DrawPanel(t);
         p.setMap(map);
@@ -27,7 +27,7 @@ public class MainFrame extends JFrame implements Runnable {
         this.addKeyListener(tank);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setSize(frameWidth, frameHeight);
-        this.setLocation(10, 20);
+        this.setLocation(0, 20);
         this.setVisible(true);
         this.setResizable(false);
         startThread();

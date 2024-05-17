@@ -7,12 +7,14 @@ public class Tank implements KeyListener{
     private int speed;
     private int x;
     private Terrain map;
+    private Cannon cannon;
 
-    public Tank(int health, int speed, Terrain map) {
+    public Tank(int health, int speed, Terrain map, Cannon cannon) {
         this.health = health;
         this.speed = speed;
         x = 0;
         this.map = map;
+        this.cannon = cannon;
     }
 
     public int getHealth() {
@@ -59,6 +61,19 @@ public class Tank implements KeyListener{
                     x++;
                 }
 
+            }
+            case KeyEvent.VK_K -> {
+                if(cannon.getDeg()>0){
+                    cannon.setDeg(cannon.getDeg()- 1);
+                    System.out.println("biden");
+
+                }
+            }
+            case KeyEvent.VK_J -> {
+                if(cannon.getDeg() < 2000){
+                    cannon.setDeg(cannon.getDeg() + 1);
+                    System.out.println("joe");
+                }
             }
         }
     }
