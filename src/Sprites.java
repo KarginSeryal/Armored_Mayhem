@@ -27,6 +27,7 @@ public class Sprites {
 
         g.drawImage(rotateImageByDegrees(cannon.getImage(), cannon.getDeg()), tank.getX()+6, tank.getY() -26, 40, 8, null);
         g.drawImage(image, tank.getX() - 54, tank.getY() -30, 108, 36, null);
+
     }
     public BufferedImage readImage() {
         image = null;
@@ -40,28 +41,30 @@ public class Sprites {
             return null;
         }
     }
+
     public BufferedImage rotateImageByDegrees(BufferedImage img, double angle) {
-        double rads = Math.toRadians(angle);
-        double sin = Math.abs(Math.sin(rads)), cos = Math.abs(Math.cos(rads));
-        int w = img.getWidth();
-        int h = img.getHeight();
-        int newWidth = (int) Math.floor(w * cos + h * sin);
-        int newHeight = (int) Math.floor(h * cos + w * sin);
-
-        BufferedImage rotated = new BufferedImage(newWidth, newHeight, BufferedImage.TYPE_INT_ARGB);
-        Graphics2D g2d = rotated.createGraphics();
-        AffineTransform at = new AffineTransform();
-        at.translate((double) (newWidth - w) / 2, (double) (newHeight - h) / 2);
-
-        int x = w / 2;
-        int y = h / 2;
-
-        at.rotate(rads, x, y);
-        g2d.setTransform(at);
-        g2d.drawImage( img, 0, 0, null);
-        g2d.dispose();
-
-        return rotated;
+        BufferedImage bufImg = toBufferedImage(img);
+        double sin = Math.abs(Math.sin(angle)), cos = Math.abs(Math.cos(angle));
+        int w = bufImg.getWidth(), h = bufImg.getHeight();
+        int newW = (int) Math.floor(w * cos + h * sin), newH = (int) Math.floor(h * cos + w * sin);
+        BufferedImage result = new BufferedImage(newW, newH, Transparency.TRANSLUCENT);
+        Graphics2D g = result.createGraphics();
+        g.translate((newW - w) / 2, (newH - h) / 2);
+        g.rotate(angle, w / 2, h / 2);
+        g.drawRenderedImage(bufImg, null);
+        g.dispose();
+        return result;
+    }
+    public static BufferedImage toBufferedImage(Image image) {
+        if (image instanceof BufferedImage) {
+            return (BufferedImage) image;
+        }
+        BufferedImage buff = new BufferedImage(image.getWidth(null), image.getHeight(null),
+                BufferedImage.TYPE_INT_ARGB);
+        Graphics2D g = buff.createGraphics();
+        g.drawImage(image, 0, 0, null);
+        g.dispose();
+        return buff;
     }
 
 
