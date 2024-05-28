@@ -13,13 +13,14 @@ public class Sprites {
     private BufferedImage image;
     private Tank tank;
     private Cannon cannon;
+    private Projectile bullet;
 
-
-    public Sprites(String name, String imageFileName, Tank tank, Cannon cannon) {
+    public Sprites(String name, String imageFileName, Tank tank, Cannon cannon, Projectile projectile) {
         this.name = name;
         this.imageFileName = imageFileName;
         this.tank = tank;
         this.cannon = cannon;
+        bullet = projectile;
         image = readImage();
 
     }
@@ -27,6 +28,9 @@ public class Sprites {
 
         g.drawImage(rotateImageByDegrees(cannon.getImage(), cannon.getDeg()), tank.getX()+6, tank.getY() -26, 40, 8, null);
         g.drawImage(image, tank.getX() - 54, tank.getY() -30, 108, 36, null);
+        if(tank.isShoot()){
+            bullet.draw(g,tank.getX()+6, tank.getY() -26, cannon.getDeg());
+        }
 
     }
     public BufferedImage readImage() {

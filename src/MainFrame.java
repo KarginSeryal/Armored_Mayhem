@@ -9,6 +9,7 @@ public class MainFrame extends JFrame implements Runnable {
     private Tank tank;
     private Terrain map;
     private Cannon cannon;
+    private Projectile bullet;
 
     public MainFrame(String display) {
         super(display);
@@ -19,8 +20,9 @@ public class MainFrame extends JFrame implements Runnable {
         this.setBackground(Color.getHSBColor(bgc[0],bgc[1],bgc[2]));
         cannon = new Cannon("sprites/cannon_1.png");
         map = new Terrain();
+        bullet = new Projectile("sprites/ball.png");
         tank = new Tank(100, 100, map, cannon);
-        t = new Sprites("tank", "sprites/tank_1.png", tank, cannon);
+        t = new Sprites("tank", "sprites/tank_1.png", tank, cannon, bullet);
         p = new DrawPanel(t);
         p.setMap(map);
         this.add(p);

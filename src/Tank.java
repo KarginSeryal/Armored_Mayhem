@@ -8,6 +8,7 @@ public class Tank implements KeyListener{
     private int x;
     private Terrain map;
     private Cannon cannon;
+    private boolean shoot;
 
     public Tank(int health, int speed, Terrain map, Cannon cannon) {
         this.health = health;
@@ -15,6 +16,7 @@ public class Tank implements KeyListener{
         x = 0;
         this.map = map;
         this.cannon = cannon;
+        shoot = false;
     }
 
     public int getHealth() {
@@ -29,7 +31,13 @@ public class Tank implements KeyListener{
         return (int) map.getHitMap().get(this.x).getX();
     }
 
+    public boolean isShoot() {
+        return shoot;
+    }
 
+    public void setShoot(boolean shoot) {
+        this.shoot = shoot;
+    }
 
     public int getSpeed() {
         return speed;
@@ -74,6 +82,9 @@ public class Tank implements KeyListener{
                     cannon.setDeg(cannon.getDeg() + 1);
                     System.out.println("joe");
                 }
+            }
+            case KeyEvent.VK_SPACE -> {
+
             }
         }
     }
