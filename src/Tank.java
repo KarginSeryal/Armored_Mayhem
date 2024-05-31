@@ -84,7 +84,7 @@ public class Tank implements KeyListener{
                 }
             }
             case KeyEvent.VK_SPACE -> {
-
+                shoot = true;
             }
         }
     }

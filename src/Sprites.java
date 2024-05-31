@@ -29,7 +29,8 @@ public class Sprites {
         g.drawImage(rotateImageByDegrees(cannon.getImage(), cannon.getDeg()), tank.getX()+6, tank.getY() -26, 40, 8, null);
         g.drawImage(image, tank.getX() - 54, tank.getY() -30, 108, 36, null);
         if(tank.isShoot()){
-            bullet.draw(g,tank.getX()+6, tank.getY() -26, cannon.getDeg());
+            tank.setShoot(bullet.draw(g,tank.getX()+6, tank.getY() -26, cannon.getDeg())) ;
+            //bullet.draw(g,tank.getX()+6, tank.getY() -26, cannon.getDeg());
         }
 
     }
