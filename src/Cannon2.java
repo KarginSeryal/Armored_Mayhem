@@ -5,13 +5,13 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
-public class Cannon implements KeyListener {
+public class Cannon2 implements KeyListener {
 
     private BufferedImage image;
     private String imageFileName;
     private int deg = 30;
 
-    public Cannon(String imageFileName) {
+    public Cannon2(String imageFileName) {
         this.imageFileName = imageFileName;
         readImage();
     }

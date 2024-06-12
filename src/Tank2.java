@@ -1,8 +1,12 @@
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 
-public class Tank implements KeyListener{
+public class Tank2 implements KeyListener {
+
+
     private int health;
     private int speed;
     private int x;
@@ -11,7 +15,7 @@ public class Tank implements KeyListener{
     private boolean shoot;
     private int power = 3;
 
-    public Tank(int health, int speed, Terrain map, Cannon cannon) {
+    public Tank2(int health, int speed, Terrain map, Cannon cannon) {
         this.health = health;
         this.speed = speed;
         x = 0;
@@ -59,32 +63,32 @@ public class Tank implements KeyListener{
 
     @Override
     public void keyPressed(KeyEvent e) {
-        switch (e.getKeyCode()){
+        switch (e.getKeyCode()) {
             case KeyEvent.VK_A -> {
-                if(x>0){
+                if (x > 0) {
                     x--;
                 }
             }
             case KeyEvent.VK_D -> {
-                if(x < 2000){
+                if (x < 2000) {
                     x++;
                 }
 
             }
-            case KeyEvent.VK_E -> {
-                if(cannon.getDeg()>0){
-                    cannon.setDeg(cannon.getDeg()- 1);
+            case KeyEvent.VK_K -> {
+                if (cannon.getDeg() > 0) {
+                    cannon.setDeg(cannon.getDeg() - 1);
 
 
                 }
             }
-            case KeyEvent.VK_Q -> {
-                if(cannon.getDeg() < 2000){
+            case KeyEvent.VK_J -> {
+                if (cannon.getDeg() < 2000) {
                     cannon.setDeg(cannon.getDeg() + 1);
                 }
             }
-            case KeyEvent.VK_SPACE -> {
-                if(power < 15){
+            case KeyEvent.VK_ENTER -> {
+                if (power < 15) {
                     power++;
                 }
             }
@@ -93,9 +97,9 @@ public class Tank implements KeyListener{
 
     @Override
     public void keyReleased(KeyEvent e) {
-        switch (e.getKeyCode()){
-            case KeyEvent.VK_SPACE -> {
-                if(power > 0){
+        switch (e.getKeyCode()) {
+            case KeyEvent.VK_ENTER -> {
+                if (power > 0) {
                     shoot = true;
                 }
             }
@@ -112,3 +116,5 @@ public class Tank implements KeyListener{
 
 
 }
+
+

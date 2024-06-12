@@ -62,7 +62,7 @@ public class Terrain {
         Color.RGBtoHSB(59, 45, 18, dirt);
         g.setColor(Color.getHSBColor(dirt[0], dirt[1], dirt[2]));
         g2.setStroke(new BasicStroke(7));
-        for(int j = 0; j < 100; j+=7) {     //brown floor
+        for(int j = 0; j < 150; j+=7) {     //brown floor
             for (int i = 0; i < cordsX.size() - 1; i++) {
                 g2.drawLine(cordsX.get(i), cordsY.get(i) + 10+j, cordsX.get(i + 1), cordsY.get(i + 1) + 10+j);
             }
@@ -84,12 +84,16 @@ public class Terrain {
             }
         }
 
-        for (int i = 0; i < hitMap.size() - 1; i++) {  //Floor hitbox
-            g.setColor(Color.gray);
-            g2.setStroke(new BasicStroke(3));
-            g2.drawLine(hitMap.get(i).x, hitMap.get(i).y +5, hitMap.get(i + 1).x, hitMap.get(i + 1).y +5);
-        }
+//        for (int i = 0; i < hitMap.size() - 1; i++) {  //Floor hitbox
+//            g.setColor(Color.gray);
+//            g2.setStroke(new BasicStroke(3));
+//            g2.drawLine(hitMap.get(i).x, hitMap.get(i).y +5, hitMap.get(i + 1).x, hitMap.get(i + 1).y +5);
+//        }
 
+    }
+
+    public ArrayList<Integer> getMap() {
+        return cordsY;
     }
 
     public ArrayList<Point> getHitMap() {

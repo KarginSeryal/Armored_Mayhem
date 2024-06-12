@@ -14,6 +14,8 @@ public class Sprites {
     private Tank tank;
     private Cannon cannon;
     private Projectile bullet;
+    boolean initial = true;
+    private int[] info = new int[4];
 
     public Sprites(String name, String imageFileName, Tank tank, Cannon cannon, Projectile projectile) {
         this.name = name;
@@ -26,10 +28,16 @@ public class Sprites {
     }
     protected void draw(Graphics g) {
 
-        g.drawImage(rotateImageByDegrees(cannon.getImage(), cannon.getDeg()), tank.getX()+6, tank.getY() -26, 40, 8, null);
-        g.drawImage(image, tank.getX() - 54, tank.getY() -30, 108, 36, null);
+        //g.drawImage(rotateImageByDegrees(cannon.getImage(), cannon.getDeg()), tank.getX()+6, tank.getY() -26, 40, 8, null);
+        g.drawImage(image, tank.getX() -51, tank.getY() -51, 102, 62, null);
         if(tank.isShoot()){
-            tank.setShoot(bullet.draw(g,tank.getX()+6, tank.getY() -26, cannon.getDeg())) ;
+            if(initial) {
+                bullet.draw(g,tank.getX()-51, tank.getY() -30, cannon.getDeg(), tank.getPower());
+                initial = false;
+                bullet.setNewShot(false);
+            }
+            initial =bullet.draw(g,bullet.getTempX(), bullet.getTempY(), cannon.getDeg(), tank.getPower());
+            System.out.println(initial);
             //bullet.draw(g,tank.getX()+6, tank.getY() -26, cannon.getDeg());
         }
 
@@ -49,7 +57,8 @@ public class Sprites {
 
     public BufferedImage rotateImageByDegrees(BufferedImage img, double angle) {
         BufferedImage bufImg = toBufferedImage(img);
-        double sin = Math.abs(Math.sin(angle)), cos = Math.abs(Math.cos(angle));
+        double cos = Math.abs(Math.cos(Math.toRadians(angle)));
+        double sin = Math.abs(Math.sin(Math.toRadians(angle)));
         int w = bufImg.getWidth(), h = bufImg.getHeight();
         int newW = (int) Math.floor(w * cos + h * sin), newH = (int) Math.floor(h * cos + w * sin);
         BufferedImage result = new BufferedImage(newW, newH, Transparency.TRANSLUCENT);
